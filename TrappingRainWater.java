@@ -71,11 +71,11 @@ public class TrappingRainWater {
 					j++;
 				}
 																
-				if(height[left] > max)							// **ONLY HAPPENS IF: The left wall is higher (>) than the right wall
-				{									//Re-evaluate the original left wall according to the max
-					while(height[left] >= max)					//and shift over left as needed
-					{								//Left wall needs to be:
-						left++;							//	1 index before the 1st index < max (1st index of water collection)
+				if(height[left] > max)						// **ONLY HAPPENS IF: The left wall is higher (>) than the right wall
+				{								//Re-evaluate the original left wall according to the max
+					while(height[left] >= max)				//and shift over left as needed
+					{							//Left wall needs to be:
+						left++;						//	1 index before the 1st index < max (1st index of water collection)
 					}
 					left--;
 				}
