@@ -41,20 +41,20 @@ public class TrappingRainWater {
 			
 			if(height[right] < height[left])					//Height drop, potential water collection
 			{
-				int j = i + 2;									//j: pointer for locating the right-wall index (has to be +2 ahead of left-wall (left))
+				int j = i + 2;							//j: pointer for locating the right-wall index (has to be +2 ahead of left-wall (left))
 				
 				if(j > height.length - 1) {return rain;}
 				
 				while(height[j] <= height[j-1])					//iterate forward until height rise, needed for water collection
-				{												//After while loop: j = index of first point of height rise
+				{								//After while loop: j = index of first point of height rise
 					j++;
 					if(j == height.length) {return rain;}
 				}
 				
 				max = 0;
 				
-				while(j < height.length)						//Find the correct right-wall index, and set max to it, by finding either:
-				{												//	- The 1st height >= the left wall
+				while(j < height.length)					//Find the correct right-wall index, and set max to it, by finding either:
+				{								//	- The 1st height >= the left wall
 					if(height[j] >= height[left])				//	- or else, the highest height that is < the left wall
 					{
 						max = height[left];
@@ -72,20 +72,20 @@ public class TrappingRainWater {
 				}
 																
 				if(height[left] > max)							// **ONLY HAPPENS IF: The left wall is higher (>) than the right wall
-				{												//Re-evaluate the original left wall according to the max
+				{									//Re-evaluate the original left wall according to the max
 					while(height[left] >= max)					//and shift over left as needed
-					{											//Left wall needs to be:
-						left++;									//		1 index before the 1st index < max (1st index of water collection)
+					{								//Left wall needs to be:
+						left++;							//	1 index before the 1st index < max (1st index of water collection)
 					}
 					left--;
 				}
 				
 				for(int k = left + 1; k < rightWallIndex; k++)			//Within rain-collection indices:
-				{														//Rain = floor(left wall, right wall) - current height
+				{								//Rain = floor(left wall, right wall) - current height
 					rain += max - height[k];
 				}
 				
-				i = rightWallIndex - 1;									//Skip ahead and continue from the right wall
+				i = rightWallIndex - 1;						//Skip ahead and continue from the right wall
 			}
 		}
 
